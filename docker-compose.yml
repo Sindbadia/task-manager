@@ -2,20 +2,22 @@ version: '3'
 
 services:
   db:
-  image: postgres
-  environment:
-    POSTGRES_USER: postgres
-    POSTGRES_PASSWORD: 123456
-    POSTGRES_DB: taskmanagerdb
-  ports:
-    - '5432:5432'
-
-  api:
-    container_name: backend
-    build: ./
+    image: postgres
     environment:
-      DATABASE_URI: postgres://postgres:123456@db:5432/taskmanagerdb
-    depends_on:
-      - db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: taskmanagerdb
     ports:
-      - '5000:5000'
+      - '5432:5432'
+
+  # api:
+  #   build: ./
+  #   environment:
+  #     DATABASE_URI: postgres://postgres:123456@db:5432/taskmanagerdb
+  #   volumes:
+  #     - ./:/usr/src/task-manager
+  #     - /usr/src/task-manager/node_modules
+  #   depends_on:
+  #     - db
+  #   ports:
+  #     - '5000:5000'
