@@ -1,7 +1,7 @@
 FROM node
 
-WORKDIR /usr/src/task-manager
-COPY package*.json ./
+WORKDIR /app
+COPY ./package.json ./
 RUN yarn install
 COPY . .
 
