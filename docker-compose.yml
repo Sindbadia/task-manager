@@ -5,7 +5,7 @@ services:
     image: postgres
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 123456
+      POSTGRES_PASSWORD: postgres
       POSTGRES_DB: pdb
     ports:
       - '5432:5432'
@@ -13,11 +13,7 @@ services:
   api:
     build: ./
     environment:
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_USERNAME: postgres
-      DB_PASSWORD: 123456
-      DB_NAME: pdb
+      NODE_ENV: development
     volumes:
       - /app/node_modules
       - ./:/app
